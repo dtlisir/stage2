@@ -22,7 +22,7 @@
                     </ul>
                     <h3 class="king-block-title">查询条件</h3>
                 </div>
-                <div class="king-block-content" id="jpages_demo1">
+                <div class="king-block-content">
                     <form class="form-horizontal">
                         <div class="form-group clearfix ">
                             <label class="col-sm-1 control-label bk-lh30 pt0">IP：</label>
@@ -57,13 +57,12 @@
                             <th>检查时间</th>
                         </tr>
                         </thead>
-                        <tbody id="datas">
+                        <tbody>
                         <tr>
                             <td colspan="6" style="text-align: center;color: #ccc">没有数据</td>
                         </tr>
                         </tbody>
                     </table>
-                    <div class="holder"></div>
                     <template id="ranger_nodata_tpl">
                         <tr>
                             <td colspan="6" style="text-align: center;color: #ccc">没有符合条件的数据</td>
@@ -87,22 +86,6 @@
 {% endblock %}
 {% block extra_block %}
     <script>
-        $(function () {
-            $("#jpages_demo1 .holder").jPages({
-                containerID: "datas", //显示数据所在的块的ID
-                first: '首页',
-                last: '尾页',
-                previous: '上页',
-                next: '下页',
-                perPage: 10, //每页显示数据为多少行
-                startPage: 1, //起始页
-                startRange: 2, //开始页码为2个
-                midRange: 5, //最多显示几个页码页码,其余用..代替             e
-                ndRange: 2, //结束页码为2个
-                keyBrowse: true
-            });
-        });
-
         function renderTpl(str, cfg) {
             var re = /(#(.+?)#)/g;
 
@@ -146,7 +129,6 @@
                         _html = $('#ranger_nodata_tpl').html();
                     }
                     $('.ranger-box tbody').html(_html);
-                    window.location.reload();
                 }
             });
         }
