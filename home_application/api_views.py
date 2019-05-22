@@ -28,18 +28,19 @@ def get_dfinfo_lisir(request):
         capacitydatas = capacitydatas.filter(mounted=mounted)
 
     datalist = []
-    for _data in capacitydatas:
-        datalist.append(
-            {
-                'ip': _data.ip,
-                # 'filesystem': _data.filesystem,
-                'mounted': _data.mounted,
-                'used': _data.used,
-                'avail': _data.avail,
-                'size': _data.size,
-                'use': _data.use,
-                'createtime': _data.createtime.strftime('%Y-%m-%d %H:%M:%S')
-            }
-        )
+    if capacitydatas:
+        for _data in capacitydatas:
+            datalist.append(
+                {
+                    'ip': _data.ip,
+                    # 'filesystem': _data.filesystem,
+                    'mounted': _data.mounted,
+                    'used': _data.used,
+                    'avail': _data.avail,
+                    'size': _data.size,
+                    'use': _data.use,
+                    'createtime': _data.createtime.strftime('%Y-%m-%d %H:%M:%S')
+                }
+            )
 
     return JsonResponse({'result': 'true', 'data': datalist, 'message': 'Success'})

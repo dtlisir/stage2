@@ -89,11 +89,17 @@
     <script>
         $(function () {
             $("#jpages_demo1 .holder").jPages({
-                containerID: "datas",
-                previous: "←",
-                next: "→",
-                perPage: 10,
-                delay: 10
+                containerID: "datas", //显示数据所在的块的ID
+                first: '首页',
+                last: '尾页',
+                previous: '上页',
+                next: '下页',
+                perPage: 10, //每页显示数据为多少行
+                startPage: 1, //起始页
+                startRange: 2, //开始页码为2个
+                midRange: 5, //最多显示几个页码页码,其余用..代替             e
+                ndRange: 2, //结束页码为2个
+                keyBrowse: true
             });
         });
 
@@ -140,6 +146,7 @@
                         _html = $('#ranger_nodata_tpl').html();
                     }
                     $('.ranger-box tbody').html(_html);
+                    window.location.reload();
                 }
             });
         }
